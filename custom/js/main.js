@@ -43,7 +43,7 @@ function startGame() {
   score = 0;
   timeLeft = 10;
   currentWord = randomWord();
-  resetWhenStartGame();
+  resetGameInfoOnUI();
   intervalOfGame = setInterval(() => {
     playGame();
   }, 1000);
@@ -63,17 +63,17 @@ function handleSubmitWord(e) {
     score++;
     timeLeft = 10;
     currentWord = randomWord()
-    resetWhenStartGame();
+    resetGameInfoOnUI();
     $('#correct').text('correct!!!');
   } else {
-    $('#correct').text('incorrect!!!');
+    $('#correct').text('Game Over!!!');
     showAlertGameOver(score);
     clearInterval(intervalOfGame);
   }
   e.preventDefault();
 }
 
-function resetWhenStartGame() {
+function resetGameInfoOnUI() {
   $('#typedWord').val('');
   $('#score').text(score);
   $('#timeLeft').text(timeLeft);
